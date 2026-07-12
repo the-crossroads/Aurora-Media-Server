@@ -1,11 +1,14 @@
 from __future__ import annotations
 
-import json
 import os
 import sys
 import tkinter as tk
 from pathlib import Path
 from tkinter import filedialog, messagebox
+
+ROOT = Path(__file__).resolve().parent.parent
+if str(ROOT) not in sys.path:
+    sys.path.insert(0, str(ROOT))
 
 from scripts.desktop_installer import prepare_installation
 
@@ -69,8 +72,16 @@ class InstallerWizard(tk.Tk):
 
 
 def main() -> None:
-    app = InstallerWizard()
-    app.mainloop()
+    if len(sys.argv) > 1 and sys.argv[1] == "--test":
+        manifest = prepare_installation(ROOT, ROOT / "dist" / "windows_test")
+        print(manifest)
+        return
+
+    try:
+        app = InstallerWizard()
+        app.mainloop()
+    except tk.TclError:
+        print("No display available; run with --test to validate installer packaging without a GUI")
 
 
 if __name__ == "__main__":

@@ -44,6 +44,22 @@ npm run dev
 docker compose -f docker/docker-compose.yml up --build
 ```
 
+### Windows .exe installer
+
+On a Windows machine, you can build a downloadable installer executable with:
+
+```powershell
+py -m pip install -r requirements.txt
+py -m pip install pyinstaller
+py scripts/windows_installer_builder.py
+```
+
+The resulting file will be created at:
+
+```text
+dist\windows\AuroraMediaServerInstaller\AuroraMediaServerInstaller.exe
+```
+
 ## API
 
 The backend exposes:

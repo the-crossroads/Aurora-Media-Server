@@ -3,7 +3,6 @@ from __future__ import annotations
 import os
 import shutil
 import subprocess
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -16,7 +15,7 @@ def ensure_tool(tool: str) -> None:
 
 def build_exe() -> Path:
     if os.name != "nt":
-        raise RuntimeError("This builder must be run on Windows")
+        raise RuntimeError("This builder must be run on Windows. Use a Windows PC to generate the .exe installer.")
 
     ensure_tool("pyinstaller")
     dist_dir = ROOT / "dist" / "windows"

@@ -3,12 +3,13 @@ Windows .exe installer build instructions
 
 Run this on a Windows machine with Python and PyInstaller installed:
 
-1. Install dependencies:
+1. Open PowerShell or Command Prompt.
+2. Install dependencies:
    py -m pip install -r requirements.txt
    py -m pip install pyinstaller
-
-2. Build the installer:
+3. Build the installer:
    py scripts/windows_installer_builder.py
-
-3. The resulting .exe will be created at:
+4. The resulting .exe will be created at:
    dist\windows\AuroraMediaServerInstaller\AuroraMediaServerInstaller.exe
+
+This is the file you can download and run on Windows.
